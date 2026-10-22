@@ -1,0 +1,8 @@
+@model DeviceCategory
+@{
+    ViewData["Title"] = "Delete category";
+}
+<h1>Delete category</h1>
+<p>Delete <strong>@Model.Name</strong>? Devices assigned to this category: @Model.Devices.Count.</p>
+<form asp-action="Delete" method="post"><input type="hidden" asp-for="Id"><button class="btn btn-danger"
+                                                                                      disabled="@(Model.Devices.Count>0)">Delete</button> <a asp-action="Index">Cancel</a></form>

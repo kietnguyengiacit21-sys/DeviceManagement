@@ -1,0 +1,16 @@
+@model AppUser
+@{
+    ViewData["Title"] = "Add user";
+}
+<h1>Add user</h1>
+<form asp-action="Create" method="post" class="card card-body form-card">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div><label asp-for="FullName"></label><input
+    asp-for="FullName" class="form-control mb-2"><span asp-validation-for="FullName"
+                                                       class="text-danger"></span><label asp-for="Email"></label><input asp-for="Email" class="form-control mb-2"><span
+    asp-validation-for="Email" class="text-danger"></span><label asp-for="PhoneNumber"></label><input
+    asp-for="PhoneNumber" class="form-control mb-3"><span asp-validation-for="PhoneNumber"
+                                                          class="text-danger"></span><button class="btn btn-primary">Save</button>
+</form>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,2 @@
+@model IEnumerable<DeviceCategory>
+@{ViewData["Title"]="Categories";}<div class="d-flex justify-content-between mb-3"><h1>Categories</h1><a asp-action="Create" class="btn btn-primary">Add category</a></div><table class="table bg-white"><thead><tr><th>Name</th><th>Description</th><th>Devices</th><th></th></tr></thead><tbody>@foreach(var x in Model){<tr><td>@x.Name</td><td>@x.Description</td><td>@x.Devices.Count</td><td><a asp-action="Edit" asp-route-id="@x.Id">Edit</a> | <a asp-action="Delete" asp-route-id="@x.Id">Delete</a></td></tr>}</tbody></table>

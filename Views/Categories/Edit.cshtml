@@ -1,0 +1,14 @@
+@model DeviceCategory
+@{
+    ViewData["Title"] = "Edit category";
+}
+<h1>Edit category</h1>
+<form asp-action="Edit" method="post" class="card card-body form-card"><input type="hidden" asp-for="Id">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div><label asp-for="Name"></label><input
+    asp-for="Name" class="form-control mb-2"><span asp-validation-for="Name" class="text-danger"></span><label
+    asp-for="Description"></label><textarea asp-for="Description" class="form-control mb-3"></textarea><button
+    class="btn btn-primary">Save</button>
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

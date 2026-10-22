@@ -1,0 +1,49 @@
+@model IEnumerable<Device>
+@{
+    ViewData["Title"] = "Devices";
+}
+<div class="d-flex justify-content-between mb-3">
+    <h1>Devices</h1><a asp-action="Create" class="btn btn-primary">Add device</a>
+</div>
+<form method="get" class="card card-body mb-3">
+    <div class="row g-2">
+        <div class="col-md-4"><input name="search" value="@ViewData["Search"]" class="form-control"
+                                         placeholder="Search name or code"></div>
+            <div class="col-md-3"><select name="categoryId" asp-items="ViewBag.Categories" class="form-select">
+                <option value="">All categories</option>
+            </select></div>
+            <div class="col-md-3"><select name="status" asp-items="ViewBag.Statuses" class="form-select">
+                <option value="">All statuses</option>
+            </select></div>
+            <div class="col-md-2"><button class="btn btn-dark">Filter</button> <a asp-action="Index"
+                                                                                      class="btn btn-outline-secondary">Reset</a></div>
+            </div>
+        </form>
+        <table class="table table-hover bg-white">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>Entry date</th>
+                    <th>Assigned user</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.Name</td>
+                        <td>@x.Code</td>
+                        <td>@x.Category?.Name</td>
+                        <td>@DevicesController.Label(x.Status)</td>
+                        <td>@x.DateOfEntry.ToString("yyyy-MM-dd")</td>
+                        <td>@(x.AppUser?.FullName??"—")</td>
+                        <td class="text-nowrap"><a asp-action="Edit" asp-route-id="@x.Id">Edit</a> | <a asp-action="Delete"
+                                                                                                            asp-route-id="@x.Id">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>

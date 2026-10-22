@@ -1,0 +1,25 @@
+@model Device
+@{
+    ViewData["Title"] = "Edit device";
+}
+<h1>Edit device</h1>
+<form asp-action="Edit" method="post" class="card card-body form-card"><input type="hidden" asp-for="Id">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3"><label asp-for="Name" class="form-label"></label><input asp-for="Name" class="form-control"><span
+        asp-validation-for="Name" class="text-danger"></span></div>
+        <div class="mb-3"><label asp-for="Code" class="form-label"></label><input asp-for="Code" class="form-control"><span
+            asp-validation-for="Code" class="text-danger"></span></div>
+            <div class="mb-3"><label asp-for="CategoryId" class="form-label"></label><select asp-for="CategoryId"
+                                                                                                 asp-items="ViewBag.Categories" class="form-select"></select></div>
+                <div class="mb-3"><label asp-for="Status" class="form-label"></label><select asp-for="Status"
+                                                                                                 asp-items="ViewBag.Statuses" class="form-select"></select></div>
+                    <div class="mb-3"><label asp-for="DateOfEntry" class="form-label"></label><input asp-for="DateOfEntry" type="date"
+                                                                                                         class="form-control"></div>
+                        <div class="mb-3"><label asp-for="AppUserId" class="form-label"></label><select asp-for="AppUserId"
+                                                                                                        asp-items="ViewBag.Users" class="form-select">
+                            <option value="">Not assigned</option>
+                        </select></div><button class="btn btn-primary">Save</button> <a asp-action="Index">Cancel</a>
+                    </form>
+                    @section Scripts {
+                    <partial name="_ValidationScriptsPartial" />
+                }

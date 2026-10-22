@@ -1,0 +1,8 @@
+@model Device
+@{
+    ViewData["Title"] = "Delete device";
+}
+<h1>Delete device</h1>
+<p>Delete <strong>@Model.Name (@Model.Code)</strong>?</p>
+<form asp-action="Delete" method="post"><input type="hidden" asp-for="Id"><button class="btn btn-danger">Delete</button>
+    <a asp-action="Index">Cancel</a></form>

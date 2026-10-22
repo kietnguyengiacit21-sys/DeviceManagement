@@ -1,0 +1,2 @@
+@model AppUser
+@{ViewData["Title"]="Delete user";}<h1>Delete user</h1><p>Delete <strong>@Model.FullName</strong>?</p><form asp-action="Delete" method="post"><input type="hidden" asp-for="Id"><button class="btn btn-danger">Delete</button> <a asp-action="Index">Cancel</a></form>
